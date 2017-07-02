@@ -1,9 +1,10 @@
 ##### CONFIG ###############
 user = 'username' 
 my_pw = 'mailpassword'
-folder = 'foldername where poe mails get in' ## z.b 'Spam'
-imapserver = 'imap server' ## z.b'imap.web.de'
+folder = 'Spam' ## z.b 'Spam'
+imapserver = 'imap.web.de' ## z.b'imap.web.de'
 imapport = '993' ## z.b 993 is default port
+delete_mail = False
 #############################
 
 import imaplib
@@ -36,7 +37,7 @@ install_and_import('pyperclip')
 #TODO:There could be more than 1 unseen Mail.
 mailbox = imaplib.IMAP4_SSL(imapserver,imapport)
 mailbox.login(user, my_pw)
-mailbox.select(ordner)
+mailbox.select(folder)
 result, mail_ids = mailbox.uid('search', None, '(HEADER Subject "Path of Exile Account Unlock Code" UNSEEN)')
 
 if len(mail_ids[0])!=0:
