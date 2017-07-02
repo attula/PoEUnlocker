@@ -1,6 +1,6 @@
 ##### CONFIG ###############
 user = 'username' 
-my_pw = 'mailpassword'
+my_pw = '' # if u leave this blank the script will ask you every time for your password
 folder = 'INBOX' ## z.b 'Spam'
 imapserver = 'imap.web.de' ## z.b'imap.web.de'
 imapport = '993' ## z.b 993 is default port
