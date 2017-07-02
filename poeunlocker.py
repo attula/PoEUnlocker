@@ -1,12 +1,13 @@
 ##### CONFIG ###############
 user = 'username' 
-my_pw = 'mailpassword'
-folder = 'Spam' ## z.b 'Spam'
+my_pw = '' # if u leave this blank the script will ask you every time for your password
+folder = 'INBOX' ## z.b 'Spam'
 imapserver = 'imap.web.de' ## z.b'imap.web.de'
 imapport = '993' ## z.b 993 is default port
 delete_mail = False
 #############################
 
+import getpass
 import imaplib
 
 def install_and_import(package):
@@ -30,13 +31,21 @@ def get_code(mailstruct):
     code=rawbody[x+7:x+19]
     return code
 
-
+#Install pyperclip if not avaible through pip
 install_and_import('pyperclip')
 
 #Connect to Server and get uid from unseen mail with POE Subject
 #TODO:There could be more than 1 unseen Mail.
 mailbox = imaplib.IMAP4_SSL(imapserver,imapport)
-mailbox.login(user, my_pw)
+if not my_pw:
+    my_pw = getpass.getpass('Email Password:')
+
+try:
+    mailbox.login(user, my_pw)
+except imaplib.IMAP4.error:
+    print('Log in failed.')
+    input()
+
 mailbox.select(folder)
 result, mail_ids = mailbox.uid('search', None, '(HEADER Subject "Path of Exile Account Unlock Code" UNSEEN)')
 
@@ -55,4 +64,3 @@ else:
 mailbox.close()
 mailbox.logout()
 input()
-
