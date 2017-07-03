@@ -14,3 +14,8 @@ Little python script which gets your Path of Exile Unlock Mail from an imap serv
 1. Run Script 
 2. ???
 3. Profit
+
+
+
+   [1]: https://www.python.org/downloads/release/python-361/
+   [2]: https://github.com/attula/PoEUnlocker/releases

@@ -1,7 +1,7 @@
 ##### CONFIG ###############
 user = 'username' 
 my_pw = '' # if u leave this blank the script will ask you every time for your password
-folder = 'INBOX' ## z.b 'Spam'
+folder = 'INBOX' ## z.b 'Spam', This is where your Path of Exile Mail usally arrive
 imapserver = 'imap.web.de' ## z.b'imap.web.de'
 imapport = '993' ## z.b 993 is default port
 delete_mail = False
